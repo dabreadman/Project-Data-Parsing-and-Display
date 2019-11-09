@@ -1,0 +1,30 @@
+
+
+//find total comments that is linked to a comment
+void findLinkedComments (Comment comment) {
+  if (comment!=null) {
+    ArrayList<Integer>kids = new ArrayList<Integer>();
+    kids = comment.getKids();
+
+    if (kids.get(0)>=1) {
+      for (int i =0; i<kids.size(); i++) {
+		if(findComment(kids.get(i)))!=null){
+			arr.add(findComment(kids.get(i)));
+			findLinkedComment(findComment(kids.get(i)));
+			}
+		}
+    } 
+  }
+}
+
+//find total comments linked to a story
+void findComments(Story s) {
+  ArrayList<Comment> comments = findComment(s);
+  arr = new ArrayList<Comment>(); 
+  
+  for (int i=0; i<comments.size(); i++) {
+	arr.add(null);
+    arr.add(comments.get(i));
+	findLinkedComments(comments.get(i));
+  }
+}
